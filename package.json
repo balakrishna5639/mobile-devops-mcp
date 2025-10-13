@@ -1,0 +1,35 @@
+{
+  "name": "mobile-devops-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server for Mobile Development Workflows - SmythOS Integration",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mobile-devops-mcp": "./dist/mcp-server.js"
+  },
+  
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js", 
+    "agent": "sre agent src/index.ts local",
+    "mcp": "tsx src/mcp-server.ts",
+    "test": "npm run dev",
+    "test-mcp": "tsx test/mcp-client.ts",
+    "test-mcp-simple": "tsx test/simple-mcp-test.ts"
+  },
+  
+  "keywords": ["smythos", "mcp", "mobile", "cordova", "android", "ios", "devops", "ai", "agent"],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@smythos/sdk": "latest",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
