@@ -1,173 +1,256 @@
-text
 # 📱 Mobile DevOps MCP Server
 
-> **Built for SmythOS Engineering Position**
-> 
-> An MCP (Model Context Protocol) server that bridges mobile app development with AI agents, specializing in Cordova/PhoneGap workflows built from real-world development experience.
+[![npm version](https://img.shields.io/npm/v/mobile-devops-mcp.svg)](https://www.npmjs.com/package/mobile-devops-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 Live Demo Output
+> An MCP server exposing mobile DevOps workflows as agent-callable tools — config generation, build diagnostics, and code signing for Cordova/PhoneGap projects.
 
-🚀 Starting Mobile DevOps Agent...
-✅ Mobile DevOps Agent initialized with 3 specialized skills!
-
-📱 Testing Cordova Config Generation...
-Generated Config Features: [
-'Optimized Android SDK versions (min: 24, target: 35)',
-'iOS deployment target: 11.0+',
-'Platform-specific splash screens and icons',
-'Universal access permissions configured'
-]
-
-🔧 Testing Android Build Diagnostic...
-Diagnosis: [
-'Android resource compatibility issue detected',
-'Deprecated Gradle dependency syntax'
-]
-Solutions: [
-'Update compileSdkVersion to 31+ and add android:exported="true" to activities',
-'Replace "compile" with "implementation" in build.gradle dependencies'
-]
-
-🍎 Testing iOS Signing Helper...
-Build Config: {
-"ios": {
-"release": {
-"codeSignIdentity": "iPhone Distribution",
-"developmentTeam": "ABCD123456",
-"packageType": "app-store",
-"provisioningProfile": "AUTO"
-}
-}
-}
-
-🎯 Mobile DevOps MCP Server ready for SmythOS integration!
-
-text
-
-## 🛠️ Features
-
-### **🎯 SmythOS Agent Integration**
-- **Perfect SDK Integration**: Native SmythOS agent with 3 specialized mobile development skills
-- **Production-Ready Skills**: Real-world mobile development expertise accessible to AI agents
-- **Seamless Workflow**: Direct skill calls and natural language processing
-
-### **📱 Cordova Config Generation**
-- **Platform Optimization**: Android SDK 24-35, iOS 11.0+ deployment targets
-- **Production Standards**: Splash screens, icons, and universal device support
-- **Real-World Configuration**: Based on actual app store submission requirements
-
-### **🔧 Android Build Diagnostics**
-- **Intelligent Analysis**: Pattern recognition for common build failures
-- **Practical Solutions**: Step-by-step fixes based on hands-on development experience
-- **SDK Management**: API level compatibility and Gradle configuration assistance
-
-### **🍎 iOS Code Signing Automation**
-- **Certificate Management**: Development, distribution, and ad-hoc configurations
-- **Build.json Generation**: Automated signing configuration for all deployment types
-- **App Store Ready**: Complete workflow from development to production deployment
-
-## 🎯 Why This Matters for SmythOS
-
-### **Real Mobile Development Expertise**
-Built from actual challenges encountered in production mobile development:
-- Android API compatibility issues (SDK 24-35 management)
-- iOS certificate and provisioning profile workflows
-- Cordova cross-platform deployment automation
-- App store submission process optimization
-
-### **AI Agent Platform Enhancement**
-- **Market Expansion**: Brings mobile development capabilities to SmythOS platform
-- **Developer Experience**: Automates complex mobile workflows that typically require expert knowledge
-- **Competitive Advantage**: Unique mobile development automation capabilities
-- **Enterprise Value**: Scales mobile development expertise across development teams
-
-## 🚀 Quick Start
-
-Install dependencies
-npm install
-
-Test SmythOS Agent Integration
-npm run dev
-
-Run standalone MCP Server
-npm run mcp
-
-Build for production
-npm run build
-
-Test MCP protocol compliance
-npm run test-mcp
-
-text
-
-## 🔧 Technical Architecture
-
-### **SmythOS Integration**
-import { Agent } from '@smythos/sdk';
-
-const mobileAgent = new Agent({
-name: 'Mobile DevOps Assistant',
-behavior: 'Expert in Cordova, Android, and iOS development workflows'
-});
-
-// Automated mobile development skills
-const config = await mobileAgent.call('CordovaConfigGenerator', {
-appName: 'My App',
-packageId: 'com.company.app',
-platforms: ['android', 'ios']
-});
-
-text
-
-### **MCP Protocol Compliance**
-- **Full MCP Implementation**: Standard Model Context Protocol for AI agent integration
-- **Tool Registration**: Dynamic tool discovery and execution
-- **Structured Responses**: JSON-formatted results for seamless agent processing
-- **Error Handling**: Comprehensive error management and recovery
-
-## 📱 Real-World Applications
-
-### **Development Team Automation**
-- **Project Setup**: Instant Cordova project configuration with optimal settings
-- **Build Issue Resolution**: Automated diagnosis and step-by-step solutions
-- **Deployment Assistance**: Complete iOS and Android release preparation
-
-### **Enterprise Integration**
-- **CI/CD Pipeline**: Automated mobile build diagnostics in deployment pipelines
-- **Developer Onboarding**: Instant access to mobile development expertise
-- **Quality Assurance**: Consistent mobile project configuration across teams
-
-## 🏆 Competitive Advantages
-
-### **Domain Expertise at Scale**
-- **Real Experience**: Solutions based on actual mobile development challenges
-- **Instant Knowledge Transfer**: Expert-level mobile development assistance available 24/7
-- **Consistent Quality**: Standardized best practices applied automatically
-- **Continuous Learning**: Expandable knowledge base for emerging mobile technologies
-
-### **SmythOS Platform Enhancement**
-- **Unique Capabilities**: Mobile development expertise not available in competing AI platforms
-- **Market Differentiation**: Specialized domain knowledge that creates customer value
-- **Revenue Opportunity**: New service offerings for mobile development automation
-- **Technical Leadership**: Advanced AI agent integration with complex development workflows
-
-## 🎯 Built for SmythOS Engineering Position
-
-This project demonstrates:
-- **✅ Real Mobile Development Expertise**: Android SDK management, iOS certificates, Cordova workflows
-- **✅ SmythOS Platform Mastery**: Perfect SDK integration and agent architecture
-- **✅ AI Integration Skills**: MCP protocol compliance and seamless agent connectivity
-- **✅ Production-Ready Code**: Professional implementation with comprehensive testing
-- **✅ Business Value Creation**: Practical solutions that solve real developer problems
-
-### **Technical Highlights**
-- Clean TypeScript implementation with proper error handling
-- Multiple execution modes: SmythOS agent, standalone MCP server, testing suite
-- Professional development workflow with comprehensive package scripts
-- Real-world problem solving based on actual mobile development experience
+**The problem:** Mobile builds break in ways that waste hours — cryptic Gradle errors, SDK mismatches, signing misconfigurations. AI agents can't help because they have no structured access to mobile tooling knowledge. This server gives any MCP-compatible agent (Claude, Cursor, Windsurf, custom) three tools that turn vague build failures into actionable fixes and generate production-ready configs on demand.
 
 ---
 
-**Ready for immediate production deployment and team integration! 🚀**
+## Install
 
-**Built to showcase the perfect combination of mobile development expertise and AI platform integration skills for the SmythOS engineering team.**
+Add to your MCP client config (Claude Desktop, Cursor, Windsurf, etc.):
+
+```json
+{
+  "mcpServers": {
+    "mobile-devops": {
+      "command": "npx",
+      "args": ["-y", "mobile-devops-mcp"]
+    }
+  }
+}
+```
+
+That's it — no cloning, no building. The server starts automatically when your MCP client needs it.
+
+---
+
+## Demo
+
+<p align="center">
+  <img src=".github/demo.jpg" alt="MCP Protocol Test — all 4 tool calls passing" width="720" />
+</p>
+
+
+<details>
+<summary><strong>Example: Agent calls <code>generate-cordova-config</code></strong></summary>
+
+**Request:**
+```json
+{
+  "name": "generate-cordova-config",
+  "arguments": {
+    "appName": "SmythOS Mobile Demo",
+    "packageId": "com.smythos.mobile.demo",
+    "platforms": ["android", "ios"],
+    "minSdkVersion": 24
+  }
+}
+```
+
+**Response (generated `config.xml`):**
+```xml
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.smythos.mobile.demo" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>SmythOS Mobile Demo</name>
+    <description>SmythOS Mobile Demo - Built with Mobile DevOps MCP Server</description>
+
+    <author email="dev@company.com" href="https://company.com">Development Team</author>
+    <content src="index.html" />
+
+    <!-- Global Preferences -->
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+
+    <!-- Android Preferences -->
+    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-targetSdkVersion" value="35" />
+    <preference name="android-installLocation" value="auto" />
+
+    <platform name="android">
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/screen/android/splash.png" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#ffffff" />
+        <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android/icon-144-xxhdpi.png" />
+        <allow-intent href="market:*" />
+    </platform>
+
+    <platform name="ios">
+        <preference name="deployment-target" value="15.0" />
+        <preference name="target-device" value="universal" />
+        <icon height="57" src="res/icon/ios/icon-57.png" width="57" />
+        <icon height="114" src="res/icon/ios/icon-57-2x.png" width="114" />
+        <icon height="72" src="res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
+        <icon height="180" src="res/icon/ios/icon-60-3x.png" width="180" />
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+    <access origin="https://*" />
+    <allow-navigation href="https://*" />
+</widget>
+```
+</details>
+
+<details>
+<summary><strong>Example: Agent calls <code>diagnose-android-build</code></strong></summary>
+
+**Request:**
+```json
+{
+  "name": "diagnose-android-build",
+  "arguments": {
+    "errorLog": "AAPT: error: resource android:attr/lStar not found. Could not find method compile() for arguments",
+    "gradleVersion": "7.4",
+    "targetSdkVersion": 35
+  }
+}
+```
+
+**Response:**
+```
+🔧 Android Build Diagnosis Report
+
+• 🔴 Android resource compatibility issue (compileSdkVersion mismatch)
+  → Update compileSdkVersion to 31+ in build.gradle and add
+    android:exported="true" to all <activity>, <service>, and <receiver>
+
+• 🔴 Deprecated Gradle dependency syntax
+  → Replace "compile" with "implementation" and "testCompile"
+    with "testImplementation" in all build.gradle files
+
+Environment:
+• Gradle: 7.4
+• Target SDK: 35
+```
+</details>
+
+<details>
+<summary><strong>Example: Agent calls <code>setup-ios-signing</code></strong></summary>
+
+**Request:**
+```json
+{
+  "name": "setup-ios-signing",
+  "arguments": {
+    "certificateType": "distribution",
+    "bundleId": "com.smythos.mobile.demo",
+    "teamId": "ABCD123456"
+  }
+}
+```
+
+**Response (generated `build.json`):**
+```json
+{
+  "ios": {
+    "release": {
+      "codeSignIdentity": "iPhone Distribution",
+      "developmentTeam": "ABCD123456",
+      "packageType": "app-store",
+      "provisioningProfile": "AUTO"
+    }
+  }
+}
+```
+
+**Step-by-step instructions:**
+1. Open Xcode → Settings → Accounts
+2. Add your Apple ID and select team: ABCD123456
+3. Download distribution certificates
+4. Create distribution provisioning profile for com.smythos.mobile.demo
+5. Save the build.json configuration in your project root
+6. Build with: `cordova build ios --release --device`
+7. Verify signing in Xcode → Signing & Capabilities
+8. Test on a physical device before submission
+</details>
+
+---
+
+## Tools
+
+| Tool | What it does |
+|------|-------------|
+| `generate-cordova-config` | Generates a production-ready `config.xml` with platform-specific icons, splash screens, SDK targets (Android 24–35, iOS 15.0+), and HTTPS-only access origins. All inputs validated with Zod; all output XML-injection-safe. |
+| `diagnose-android-build` | Pattern-matches against **14 known Android build failures** (SDK mismatches, Gradle deprecations, AAPT2, multidex, manifest merging, Kotlin conflicts, cleartext, missing env vars, …) and returns severity-tagged issues with fix commands. |
+| `setup-ios-signing` | Generates a `build.json` for development / distribution / ad-hoc signing, maps certificate types to `codeSignIdentity` and `packageType`, and outputs step-by-step Xcode instructions. |
+
+---
+
+## Architecture
+
+```
+src/
+├── tools/                    # Shared tool layer (single source of truth)
+│   ├── xml-utils.ts          # XML escaping to prevent injection
+│   ├── cordova-config.ts     # Cordova config generator + Zod schema
+│   ├── android-diagnostic.ts # Android build diagnostic (14 patterns)
+│   ├── ios-signing.ts        # iOS code signing helper + Zod schema
+│   └── index.ts              # Barrel export
+├── index.ts                  # SmythOS Agent entry point
+└── mcp-server.ts             # Standalone MCP Server (stdio transport)
+```
+
+Both entry points consume the shared `tools/` layer — zero logic duplication between the MCP server and the SmythOS agent.
+
+### MCP Protocol Details
+
+- **Transport:** stdio (standard MCP)
+- **Schemas:** `ListToolsRequestSchema` / `CallToolRequestSchema` from `@modelcontextprotocol/sdk`
+- **Validation:** All inputs pass through Zod schemas before execution
+- **Error handling:** Failures return `{ isError: true }` with a descriptive message
+
+---
+
+## Development
+
+**Requirements:** Node.js 18+
+
+```bash
+# Clone and install
+git clone https://github.com/balakrishna5639/mobile-devops-mcp.git
+cd mobile-devops-mcp
+npm install
+
+# Run the MCP server locally (stdio)
+npm run mcp
+
+# Run unit tests (53 tests across 4 suites)
+npm test
+
+# Run MCP protocol integration test
+npm run test-mcp
+
+# Build for production
+npm run build
+```
+
+---
+
+## Testing
+
+```
+ ✓ src/tools/__tests__/xml-utils.test.ts         (8 tests)
+ ✓ src/tools/__tests__/cordova-config.test.ts     (13 tests)
+ ✓ src/tools/__tests__/android-diagnostic.test.ts (21 tests)
+ ✓ src/tools/__tests__/ios-signing.test.ts        (11 tests)
+
+ Test Files  4 passed (4)
+      Tests  53 passed (53)
+```
+
+---
+
+## License
+
+MIT
